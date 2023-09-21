@@ -1,0 +1,20 @@
+PROJECT: "datagpt"
+
+llm:
+  openai:
+    api_base: https://api.openai.com/v1   # change to azure api base if you are using azure
+    api_key: sk-xxx
+    api_model: gpt-3.5-turbo # change to gpt-4 if you want to use gpt-4
+    # if you are using azure, uncomment azure section
+    # azure:
+    #    engine: api-gpt-35-turbo
+    #    api_version: 2023-09-01-preview
+    #    embedding_deployment: api-embedding
+
+database:
+  type: postgresql
+  uri: postgresql://postgres:@localhost:5432/datagpt
+
+memory:
+  dir: data
+  schema_file: schema
