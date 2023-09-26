@@ -10,6 +10,13 @@ echo ${lang}
 # get current dir
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+# make the directory format compatible with Windows
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+    DRIVE="${CUR_DIR:1:1}"
+    CUR_DIR="${DRIVE^}:${CUR_DIR:2}"
+fi
+
+
 echo "${CUR_DIR}/sql/${lang}/pg/*.sql"
 
 docker rm -f datagpt-example-pg
